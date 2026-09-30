@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f3eb">
+    <title>Delp Beans — weekly coffee connections</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="Delp Beans home">
+        <span class="wordmark-icon" aria-hidden="true">db</span>
+        <span>delp beans</span>
+      </a>
+      <span class="header-note">A little more connected, every week.</span>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">THE WEEKLY COFFEE CLUB</p>
+        <h1 id="page-title">Good things happen<br>one conversation at a time.</h1>
+        <p class="intro-copy">Bring your people together for a one-to-one each week. We’ll keep track of past matches and do our best to introduce everyone to someone new.</p>
+      </section>
+
+      <section class="round-panel" aria-labelledby="round-heading">
+        <div class="round-copy">
+          <p class="eyebrow">THIS WEEK</p>
+          <h2 id="round-heading">Make a fresh connection</h2>
+          <p id="round-description">Add your club members, then create this week’s pairings.</p>
+          <p class="week-label" id="week-label"></p>
+        </div>
+        <div class="round-actions">
+          <div class="round-buttons">
+            <button class="button button-primary" id="create-round" type="button" aria-keyshortcuts="P">Create this week’s pairs <span aria-hidden="true">→</span></button>
+            <button class="button button-secondary" id="simulate-week" type="button" aria-keyshortcuts="W">Simulate next week <span aria-hidden="true">↗</span></button>
+            <button class="button button-quiet" id="reset-week" type="button" aria-keyshortcuts="R" hidden>Reset to real week</button>
+          </div>
+        </div>
+      </section>
+
+      <p class="shortcut-legend">Keyboard shortcuts: <kbd>A</kbd> add person · <kbd>P</kbd> create pairs · <kbd>W</kbd> simulate next week · <kbd>R</kbd> reset to real week</p>
+      <p class="notice" id="status-message" role="status" aria-live="polite"></p>
+
+      <div class="content-grid">
+        <section class="card people-card" aria-labelledby="people-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">YOUR CLUB</p>
+              <h2 id="people-heading">People <span class="count" id="people-count">0</span></h2>
+            </div>
+          </div>
+
+          <form class="add-form" id="add-person-form">
+            <label class="sr-only" for="person-name">Name</label>
+            <input id="person-name" name="name" type="text" maxlength="60" placeholder="Add someone by name" autocomplete="off" required>
+            <label class="sr-only" for="person-role">Job role</label>
+            <input id="person-role" name="role" type="text" maxlength="60" placeholder="Job role (e.g. PM)" autocomplete="off">
+            <button class="button button-dark" type="submit" aria-keyshortcuts="A">Add person</button>
+          </form>
+          <p class="helper-text">Add roles to encourage cross-functional pairings. Click a name or role below to edit it in place.</p>
+
+          <ul class="people-list" id="people-list" aria-label="Club members"></ul>
+          <p class="empty-state" id="people-empty">Your club starts with a conversation. Add the first person above.</p>
+        </section>
+
+        <section class="card history-card" aria-labelledby="history-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">THE STORY SO FAR</p>
+              <h2 id="history-heading">Recent pairings</h2>
+            </div>
+            <span class="history-count" id="round-count">0 rounds</span>
+          </div>
+          <div class="history-list" id="history-list"></div>
+          <p class="empty-state" id="history-empty">Your weekly pairings will show up here, so it’s easy to keep introductions fresh.</p>
+        </section>
+
+        <section class="card stats-card" aria-labelledby="stats-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">THE BIG PICTURE</p>
+              <h2 id="stats-heading">Connection map</h2>
+            </div>
+            <span class="history-count" id="stats-round-count">Across 0 rounds</span>
+          </div>
+
+          <div class="stat-grid" aria-label="Connection summary">
+            <article class="stat-tile">
+              <span class="stat-value" id="stat-total-meetings">0</span>
+              <span class="stat-label">Introductions</span>
+            </article>
+            <article class="stat-tile">
+              <span class="stat-value" id="stat-unique-pairs">0</span>
+              <span class="stat-label">Unique pairs</span>
+            </article>
+            <article class="stat-tile stat-highlight">
+              <span class="stat-value" id="stat-cross-function">0</span>
+              <span class="stat-label">Cross-functional</span>
+              <span class="stat-detail" id="stat-cross-share">No role data yet</span>
+            </article>
+            <article class="stat-tile">
+              <span class="stat-value" id="stat-functions">0</span>
+              <span class="stat-label">Functions</span>
+            </article>
+          </div>
+
+          <div class="heatmap-heading">
+            <div>
+              <h3>Which functions have met?</h3>
+              <p>Each cell counts introductions between two functions. Darker cells mean more connections.</p>
+            </div>
+          </div>
+          <div class="heatmap-scroll" id="role-heatmap"></div>
+          <p class="heatmap-note" id="heatmap-note"></p>
+          <p class="empty-state" id="stats-empty">Create a round to start building your connection map.</p>
+        </section>
+      </div>
+
+      <p class="privacy-note"><span aria-hidden="true">✳</span> This starter app keeps its data on this device only. It isn’t shared with other club members yet.</p>
+    </main>
+
+    <footer class="site-footer">
+      <span>delp beans</span>
+      <span>Make room for a good chat.</span>
+    </footer>
+  </body>
+</html>
